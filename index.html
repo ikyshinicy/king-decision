@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruang Sidang Kerajaan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hall">
+
+  <header class="decree-bar">
+    <svg class="seal-mark" viewBox="0 0 60 60" aria-hidden="true">
+      <circle cx="30" cy="30" r="27" fill="none" stroke="var(--gold)" stroke-width="1.4"/>
+      <circle cx="30" cy="30" r="20" fill="none" stroke="var(--gold-soft)" stroke-width="1"/>
+      <path d="M30 14 L34 26 L47 26 L36 33 L40 46 L30 38 L20 46 L24 33 L13 26 L26 26 Z" fill="var(--gold)" opacity="0.9"/>
+    </svg>
+    <div class="decree-titles">
+      <h1>Ruang Sidang Kerajaan</h1>
+      <p class="subtitle">Dewan penasihat pribadi &mdash; tiga menteri, satu meja</p>
+    </div>
+  </header>
+
+  <section class="table-scene">
+    <svg viewBox="0 0 600 260" class="table-svg" aria-hidden="true">
+      <ellipse cx="300" cy="185" rx="230" ry="52" fill="var(--ink-2)" stroke="var(--border)" stroke-width="1.5"/>
+      <ellipse cx="300" cy="180" rx="230" ry="52" fill="none" stroke="var(--gold-soft)" stroke-width="1" opacity="0.5"/>
+
+      <!-- threads between ministers -->
+      <line id="thread-gc" class="thread" x1="150" y1="150" x2="300" y2="105"/>
+      <line id="thread-cp" class="thread" x1="300" y1="105" x2="450" y2="150"/>
+      <line id="thread-gp" class="thread" x1="150" y1="150" x2="450" y2="150"/>
+      <line class="thread thread-throne" x1="300" y1="40" x2="300" y2="105"/>
+
+      <!-- throne mark -->
+      <g transform="translate(300,32)">
+        <circle r="14" fill="var(--ink-2)" stroke="var(--gold)" stroke-width="1.4"/>
+        <path d="M-6 4 L-6 -3 L-3 1 L0 -5 L3 1 L6 -3 L6 4 Z" fill="var(--gold)"/>
+      </g>
+      <text x="300" y="8" text-anchor="middle" class="seat-caption">RAJA</text>
+
+      <!-- Gemini seat -->
+      <g class="seat" id="seat-gemini" transform="translate(150,150)">
+        <circle r="24" fill="var(--ink-2)" stroke="var(--sapphire)" stroke-width="2"/>
+        <circle class="pulse-ring" r="24" fill="none" stroke="var(--sapphire)" stroke-width="1.5"/>
+        <text text-anchor="middle" dy="6" class="monogram" fill="var(--sapphire)">GM</text>
+      </g>
+      <text x="150" y="198" text-anchor="middle" class="seat-caption">GEMINI &middot; INOVASI</text>
+
+      <!-- Claude seat -->
+      <g class="seat" id="seat-claude" transform="translate(300,105)">
+        <circle r="24" fill="var(--ink-2)" stroke="var(--bronze)" stroke-width="2"/>
+        <circle class="pulse-ring" r="24" fill="none" stroke="var(--bronze)" stroke-width="1.5"/>
+        <text text-anchor="middle" dy="6" class="monogram" fill="var(--bronze)">CL</text>
+      </g>
+      <text x="300" y="153" text-anchor="middle" class="seat-caption">CLAUDE &middot; REALITAS</text>
+
+      <!-- GPT seat -->
+      <g class="seat" id="seat-gpt" transform="translate(450,150)">
+        <circle r="24" fill="var(--ink-2)" stroke="var(--verdigris)" stroke-width="2"/>
+        <circle class="pulse-ring" r="24" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+        <text text-anchor="middle" dy="6" class="monogram" fill="var(--verdigris)">GP</text>
+      </g>
+      <text x="450" y="198" text-anchor="middle" class="seat-caption">GPT &middot; EKSEKUSI</text>
+    </svg>
+  </section>
+
+  <section class="council">
+
+    <article class="seat-card" data-minister="gemini">
+      <div class="ribbon" style="--accent:var(--sapphire)">GM</div>
+      <header>
+        <div class="who">
+          <span class="name">Gemini</span>
+          <span class="role">Menteri Inovasi</span>
+        </div>
+        <span class="status" id="status-gemini">Siaga</span>
+      </header>
+      <div class="scroll" id="chat-gemini">
+        <div class="msg msg-minister">Titahkan satu bahan, saya akan carikan sudut pandang yang belum terpikirkan.</div>
+      </div>
+    </article>
+
+    <article class="seat-card" data-minister="claude">
+      <div class="ribbon" style="--accent:var(--bronze)">CL</div>
+      <header>
+        <div class="who">
+          <span class="name">Claude</span>
+          <span class="role">Menteri Realitas</span>
+        </div>
+        <span class="status" id="status-claude">Siaga</span>
+      </header>
+      <div class="scroll" id="chat-claude">
+        <div class="msg msg-minister">Saya akan uji kelayakan dan risiko dari setiap gagasan sebelum disahkan.</div>
+      </div>
+    </article>
+
+    <article class="seat-card" data-minister="gpt">
+      <div class="ribbon" style="--accent:var(--verdigris)">GP</div>
+      <header>
+        <div class="who">
+          <span class="name">GPT</span>
+          <span class="role">Menteri Eksekusi</span>
+        </div>
+        <span class="status" id="status-gpt">Siaga</span>
+      </header>
+      <div class="scroll" id="chat-gpt">
+        <div class="msg msg-minister">Serahkan pada saya langkah taktis dan urutan kerjanya.</div>
+      </div>
+    </article>
+
+  </section>
+
+  <footer class="decree-input">
+    <div class="input-row">
+      <textarea id="prompt-input" rows="2" placeholder="Sampaikan titah atau ide untuk dibahas dewan..."></textarea>
+      <button id="send-btn" class="seal-btn">
+        <span>Kirim Titah</span>
+      </button>
+    </div>
+    <div class="controls-row">
+      <button id="debate-btn" class="ghost-btn">Minta Dewan Berdebat</button>
+      <button id="voice-btn" class="ghost-btn" data-active="false">Mode Suara: Nonaktif</button>
+    </div>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
