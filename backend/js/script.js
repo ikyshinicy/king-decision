@@ -5,7 +5,7 @@
 
 const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
 const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
-const ENDPOINT = `${SUPABASE_URL}/functions/v1/mahkamah-ai`;
+const ENDPOINT = `${SUPABASE_URL}/functions/v1/role`;
 
 const MINISTERS = ['gemini', 'claude', 'gpt'];
 let history = []; // { role: 'king'|'gemini'|'claude'|'gpt', text: string }
