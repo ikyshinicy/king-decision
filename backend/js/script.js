@@ -16,7 +16,7 @@ function setStatus(minister, state, label){
   el.dataset.state = state;
 }
 
-function seatEl(minister){ return document.getElementById(`seat-${minister}`); }
+function seatEl(minister){ return document.getElementById(`stage-${minister}`); }
 
 function appendMessage(minister, html, isKing){
   const box = document.getElementById(`chat-${minister}`);
@@ -82,14 +82,10 @@ function sendTitah(){
 }
 
 function triggerDebate(){
-  const threads = ['thread-gc', 'thread-cp', 'thread-gp'];
-  threads.forEach(id => document.getElementById(id).classList.add('active'));
-
   const lastKing = [...history].reverse().find(h => h.role === 'king');
   const prompt = lastKing ? lastKing.text : 'Lanjutkan diskusi.';
 
-  kirimKeDewan(prompt, 'Tanggapi langsung pandangan menteri lain yang berbeda denganmu.')
-    .finally(() => threads.forEach(id => document.getElementById(id).classList.remove('active')));
+  kirimKeDewan(prompt, 'Tanggapi langsung pandangan menteri lain yang berbeda denganmu.');
 }
 
 function toggleVoice(){
