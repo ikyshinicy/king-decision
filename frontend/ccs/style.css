@@ -64,44 +64,55 @@ body{
   background:var(--ink-2);
   border:1px solid var(--border);
   border-radius:8px;
-  padding:8px 4px 0;
+  padding:14px;
 }
-.table-svg{width:100%;height:auto;display:block;}
-.seat-caption{
+.throne-caption{
+  text-align:center;
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:0.12em;
+  color:var(--gold-soft);
+  margin-bottom:10px;
+}
+.stage-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.stage{
+  position:relative;
+  border:1px solid var(--border);
+  border-radius:6px;
+  background:radial-gradient(ellipse at 50% 80%, #241D12 0%, var(--ink) 70%);
+  aspect-ratio:1/1.1;
+  overflow:hidden;
+  transition:border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.stage model-viewer{
+  width:100%;
+  height:100%;
+  --poster-color:transparent;
+}
+.stage .seat-caption{
+  position:absolute;
+  bottom:8px;
+  left:0;
+  right:0;
+  text-align:center;
   font-family:var(--font-mono);
   font-size:9px;
   letter-spacing:0.08em;
-  fill:var(--muted);
+  color:var(--muted);
+  pointer-events:none;
 }
-.monogram{
-  font-family:var(--font-display);
-  font-style:italic;
-  font-weight:600;
-  font-size:15px;
-}
-.thread{
-  stroke:var(--border);
-  stroke-width:1;
-  stroke-dasharray:3 4;
-}
-.thread-throne{stroke:var(--gold-soft);}
-.thread.active{
-  stroke:var(--gold);
-  stroke-width:1.4;
-  animation:flow 1.1s linear infinite;
-}
-@keyframes flow{to{stroke-dashoffset:-14;}}
+#stage-gemini.thinking{border-color:var(--sapphire);box-shadow:0 0 14px rgba(110,155,209,0.35);}
+#stage-claude.thinking{border-color:var(--bronze);box-shadow:0 0 14px rgba(197,136,87,0.35);}
+#stage-gpt.thinking{border-color:var(--verdigris);box-shadow:0 0 14px rgba(111,174,147,0.35);}
+.stage.replied{border-color:var(--gold-soft);}
 
-.pulse-ring{opacity:0;transform-origin:center;}
-.seat.thinking .pulse-ring{
-  opacity:0.7;
-  animation:pulse 1.3s ease-out infinite;
+@media (max-width:760px){
+  .stage-grid{grid-template-columns:1fr;}
 }
-@keyframes pulse{
-  from{r:24;opacity:0.7;}
-  to{r:34;opacity:0;}
-}
-.seat.replied circle:first-child{stroke-width:3;}
 
 /* ---------- Council columns ---------- */
 .council{
