@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="frontend/ccs/style.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -26,47 +27,48 @@
   </header>
 
   <section class="table-scene">
-    <svg viewBox="0 0 600 260" class="table-svg" aria-hidden="true">
-      <ellipse cx="300" cy="185" rx="230" ry="52" fill="var(--ink-2)" stroke="var(--border)" stroke-width="1.5"/>
-      <ellipse cx="300" cy="180" rx="230" ry="52" fill="none" stroke="var(--gold-soft)" stroke-width="1" opacity="0.5"/>
-
-      <!-- threads between ministers -->
-      <line id="thread-gc" class="thread" x1="150" y1="150" x2="300" y2="105"/>
-      <line id="thread-cp" class="thread" x1="300" y1="105" x2="450" y2="150"/>
-      <line id="thread-gp" class="thread" x1="150" y1="150" x2="450" y2="150"/>
-      <line class="thread thread-throne" x1="300" y1="40" x2="300" y2="105"/>
-
-      <!-- throne mark -->
-      <g transform="translate(300,32)">
-        <circle r="14" fill="var(--ink-2)" stroke="var(--gold)" stroke-width="1.4"/>
-        <path d="M-6 4 L-6 -3 L-3 1 L0 -5 L3 1 L6 -3 L6 4 Z" fill="var(--gold)"/>
-      </g>
-      <text x="300" y="8" text-anchor="middle" class="seat-caption">RAJA</text>
-
-      <!-- Gemini seat -->
-      <g class="seat" id="seat-gemini" transform="translate(150,150)">
-        <circle r="24" fill="var(--ink-2)" stroke="var(--sapphire)" stroke-width="2"/>
-        <circle class="pulse-ring" r="24" fill="none" stroke="var(--sapphire)" stroke-width="1.5"/>
-        <text text-anchor="middle" dy="6" class="monogram" fill="var(--sapphire)">GM</text>
-      </g>
-      <text x="150" y="198" text-anchor="middle" class="seat-caption">GEMINI &middot; INOVASI</text>
-
-      <!-- Claude seat -->
-      <g class="seat" id="seat-claude" transform="translate(300,105)">
-        <circle r="24" fill="var(--ink-2)" stroke="var(--bronze)" stroke-width="2"/>
-        <circle class="pulse-ring" r="24" fill="none" stroke="var(--bronze)" stroke-width="1.5"/>
-        <text text-anchor="middle" dy="6" class="monogram" fill="var(--bronze)">CL</text>
-      </g>
-      <text x="300" y="153" text-anchor="middle" class="seat-caption">CLAUDE &middot; REALITAS</text>
-
-      <!-- GPT seat -->
-      <g class="seat" id="seat-gpt" transform="translate(450,150)">
-        <circle r="24" fill="var(--ink-2)" stroke="var(--verdigris)" stroke-width="2"/>
-        <circle class="pulse-ring" r="24" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
-        <text text-anchor="middle" dy="6" class="monogram" fill="var(--verdigris)">GP</text>
-      </g>
-      <text x="450" y="198" text-anchor="middle" class="seat-caption">GPT &middot; EKSEKUSI</text>
-    </svg>
+    <div class="throne-caption">RAJA</div>
+    <div class="stage-grid">
+      <div class="stage" id="stage-gemini">
+        <model-viewer
+          id="model-gemini"
+          src="assets/models/gemini.glb"
+          camera-controls
+          disable-pan
+          shadow-intensity="1"
+          exposure="1"
+          camera-orbit="0deg 75deg 105%"
+          interaction-prompt="none">
+        </model-viewer>
+        <span class="seat-caption">GEMINI &middot; INOVASI</span>
+      </div>
+      <div class="stage" id="stage-claude">
+        <model-viewer
+          id="model-claude"
+          src="assets/models/claude.glb"
+          camera-controls
+          disable-pan
+          shadow-intensity="1"
+          exposure="1"
+          camera-orbit="0deg 75deg 105%"
+          interaction-prompt="none">
+        </model-viewer>
+        <span class="seat-caption">CLAUDE &middot; REALITAS</span>
+      </div>
+      <div class="stage" id="stage-gpt">
+        <model-viewer
+          id="model-gpt"
+          src="assets/models/gpt.glb"
+          camera-controls
+          disable-pan
+          shadow-intensity="1"
+          exposure="1"
+          camera-orbit="0deg 75deg 105%"
+          interaction-prompt="none">
+        </model-viewer>
+        <span class="seat-caption">GPT &middot; EKSEKUSI</span>
+      </div>
+    </div>
   </section>
 
   <section class="council">
