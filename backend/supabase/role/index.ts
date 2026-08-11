@@ -3,6 +3,12 @@
 
 const REPLICATE_API_KEY = Deno.env.get("REPLICATE_API_KEY")!;
 
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+};
+
 const MODELS = {
   gemini: "google/gemini-2.5-flash",
   claude: "anthropic/claude-4.5-sonnet",
@@ -72,8 +78,12 @@ async function pollUntilDone(url: string, timeoutMs = 30000): Promise<string> {
 }
 
 Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: CORS_HEADERS });
+  }
+
   if (req.method !== "POST") {
-    return new Response("Method not allowed", { status: 405 });
+    return new Response("Method not allowed", { status: 405, headers: CORS_HEADERS });
   }
 
   try {
@@ -100,12 +110,12 @@ Deno.serve(async (req) => {
     });
 
     return new Response(JSON.stringify(output), {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...CORS_HEADERS },
     });
   } catch (err) {
     return new Response(JSON.stringify({ error: String(err) }), {
       status: 500,
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...CORS_HEADERS },
     });
   }
 });
