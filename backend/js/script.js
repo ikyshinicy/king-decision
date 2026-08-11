@@ -3,9 +3,9 @@
   Isi SUPABASE_URL dan SUPABASE_ANON_KEY di bawah sebelum dipakai.
 */
 
-const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
-const ENDPOINT = `${SUPABASE_URL}/functions/v1/role`;
+const SUPABASE_URL = "https://cavouyzyasnuygkuwizy.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNhdm91eXp5YXNudXlna3V3aXp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NjQzMDIsImV4cCI6MjA5NDQ0MDMwMn0.P9TepO4RLhxHv03ybUlwGMefCwkdjCnDwNpfqzAS2lo";
+const ENDPOINT = `${SUPABASE_URL}/functions/v1/mahkamah-ai`;
 
 const MINISTERS = ['gemini', 'claude', 'gpt'];
 let history = []; // { role: 'king'|'gemini'|'claude'|'gpt', text: string }
